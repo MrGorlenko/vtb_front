@@ -217,8 +217,8 @@
           placeholder="Серия и номер паспорта"
           :error="rules.passport.error"
           mask="9999 999999"
-          :errorText="rules.passport.errorText"
-          @blur="validateProp('passport')"
+          :errorText="rules.passport.errorText" @blur="validateProp('passport')"
+          :style="{'flex': 22}"
         />
         <custom-input
           type="date"
@@ -230,11 +230,17 @@
           :errorText="rules.p_date.errorText"
           @blur="validateProp('p_date')"
         />
+        <custom-input type="text" class="form__input form__input--bigger" v-model:value="data.inn"
+          placeholder="ИНН" :error="rules.inn.error" mask="999999999999"
+          :errorText="rules.inn.errorText" @blur="validateProp('inn')"
+          :style="{'flex': 12}"
+        />
         <custom-input
           type="text"
           class="form__input form__input--bigger form__input--pc"
           v-model:value="data.p_date"
           placeholder="Дата выдачи паспорта"
+          :style="{'flex': 22}"
           :error="rules.p_date.error"
           mask="99.99.9999"
           :errorText="rules.p_date.errorText"
@@ -335,6 +341,7 @@ export default {
         birthday: "",
         phone: "",
         email: "",
+        inn: '',
         passport: "",
         p_date: "",
         address: "",
@@ -382,6 +389,7 @@ export default {
           complete: true,
           errorText: "",
         },
+        inn: {required: true, error: false, complete: true, errorText: ''},
         p_date: { required: true, error: false, complete: true, errorText: "" },
       },
     };
